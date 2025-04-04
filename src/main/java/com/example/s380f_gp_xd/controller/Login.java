@@ -18,10 +18,10 @@ public class Login {
 
     @GetMapping("/login")
     public String showLoginForm(@RequestParam(required = false) String error, Model model) {
-        if (error != null && error.equals("true")) { // Spring Security sets error=true for login failures
+        if (error != null && error.equals("true")) {
             model.addAttribute("errorMessage", "Invalid username or password. Please try again.");
         }
-        return "login"; // Points to login.html
+        return "login";
     }
 
 

@@ -39,19 +39,18 @@ public class Security {
                         .anyRequest().authenticated() // Authenticate all other requests
                 )
                 .formLogin(login -> login
-                        .loginPage("/login") // Custom login page
-                        .loginProcessingUrl("/process-login") // Handles login POST requests
-                        .defaultSuccessUrl("/welcome", true) // Redirect after successful login
-                        .failureUrl("/login?error=true") // Redirect to login page with error on login failure
+                        .loginPage("/login")
+                        .loginProcessingUrl("/process-login")
+                        .defaultSuccessUrl("/welcome", true)
+                        .failureUrl("/login?error=true")
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout") // Custom logout URL
-                        .logoutSuccessUrl("/") // Redirect after successful logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
                 );
 
-        // Ensure H2 Console access and frame support
-        http.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**", "/index.html", "/index-chin.html")); // Disable CSRF for static pages
-        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)); // Allow frames from the same origin
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**", "/index.html", "/index-chin.html"));
+        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         return http.build();
     }
