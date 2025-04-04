@@ -1,22 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:c="jakarta.tags.core">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Applications: Design And Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .container {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+        .list-group-item {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .list-group-item a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+        .action-links {
+            margin: 15px 0;
+        }
+        .action-links a {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .action-links a:hover {
+            background-color: #2980b9;
+        }
+        .language-switcher {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
-<h1>Web Applications: Design And Development</h1>
-<h2>List of Lectures:</h2>
-<ul>
-    <li>L21</li>
-    <li>L22</li>
-    <li>L23</li>
-    <li>L24</li>
-</ul>
-<a href="/login">Login</a>
-<a href="/register">Register</a>
-<p>Select your language:</p>
-<a href="/index-chin.html">Switch to Chinese</a>
+<header>
+    <h1>Web Applications: Design And Development</h1>
+</header>
+
+<section>
+    <h2>List of Lectures:</h2>
+    <ul class="list-group">
+        <li class="list-group-item">L21</li>
+        <li class="list-group-item">L22</li>
+        <li class="list-group-item">L23</li>
+        <li class="list-group-item">L24</li>
+    </ul>
+</section>
+
+<div class="action-links">
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+</div>
+
+<div class="container">
+    <h2>Polls</h2>
+    <ul class="list-group">
+        <c:forEach items="${polls}" var="poll">
+            <li class="list-group-item">
+                <a href="PollServlet?id=${poll.id}">${poll.question}</a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
+
+
+
+<div class="language-switcher">
+    <p>Select your language:</p>
+    <a href="/index-chin.html">繁體中文 (Traditional Chinese)</a> |
+    <a href="/index-sp-chin.html">简体中文 (Simplified Chinese)</a>
+</div>
 </body>
 </html>

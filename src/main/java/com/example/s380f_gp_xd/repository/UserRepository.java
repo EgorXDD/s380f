@@ -2,12 +2,19 @@ package com.example.s380f_gp_xd.repository;
 
 import com.example.s380f_gp_xd.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    // Find by username (case-sensitive)
     Optional<User> findByUsername(String username);
+
+    // Find by email (case-sensitive)
     Optional<User> findByEmail(String email);
 
+    // Check if username exists
+    boolean existsByUsername(String username);
 
+    // Check if email exists
+    boolean existsByEmail(String email);
 }

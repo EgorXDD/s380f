@@ -1,19 +1,27 @@
 package com.example.s380f_gp_xd.entity;
 
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
-    private String type;
+
+    @Column(nullable = false)
+    private String type; // "student", "admin", "teacher", etc.
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     private String fullname;
     private String phonenumber;
 
@@ -66,6 +74,4 @@ public class User {
         this.type = type;
     }
 
-
 }
-
