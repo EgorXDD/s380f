@@ -1,0 +1,1 @@
+insert into UserRegistration (Username, Password, Email, FullName, PhoneNum) values ('ivan1120chu','1234','ivan1120haha@gmail.com','Chu Yat Long','61889848'  )
