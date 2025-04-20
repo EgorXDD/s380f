@@ -27,7 +27,7 @@ public class Student extends User {
     public enum Department {
         COMPUTER_SCIENCE,
         ELECTRICAL_ENGINEERING,
-        MECHANICAL_ENGINEERING,
+        MECHANICAL_ENGINEERIN,
         BUSINESS_ADMINISTRATION
     }
 

@@ -35,7 +35,7 @@ public class Security {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/index.html", "/index-chin.html","/index-sp-chin.html","/register", "/login", "/process-login", "/h2-console/**").permitAll() // Allow access
+                        .requestMatchers("/", "/index.html", "/index-chin.html","/index-sp-chin.html","/register", "/login", "/process-login","/polls","/polls/new", "/h2-console/**").permitAll() // Allow access
                         .anyRequest().authenticated() // Authenticate all other requests
                 )
                 .formLogin(login -> login

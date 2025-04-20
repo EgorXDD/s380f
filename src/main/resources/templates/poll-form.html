@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Poll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+            margin: 0;
+            color: #333;
+        }
+        .poll-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button, .back-link {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .back-link {
+            background-color: #6c757d;
+            color: white;
+        }
+        .back-link:hover {
+            background-color: #5a6268;
+        }
+        @media (max-width: 600px) {
+            .poll-form-container {
+                padding: 20px;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            button, .back-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="poll-form-container">
+    <h1>Create a New Poll</h1>
+    <form th:action="@{/polls}" th:object="${poll}" method="post">
+
+        <div class="form-group">
+            <label for="question">Question</label>
+            <input type="text" th:field="*{question}" id="question" placeholder="Enter question" required/>
+            <div th:if="${#fields.hasErrors('question')}" class="error" th:errors="*{question}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="option1">Choice 1</label>
+            <input type="text" th:field="*{options[0].text}" id="option1" placeholder="First choice" required/>
+            <div th:if="${#fields.hasErrors('options[0].text')}" class="error" th:errors="*{options[0].text}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="option2">Choice 2</label>
+            <input type="text" th:field="*{options[1].text}" id="option2" placeholder="Second choice" required/>
+            <div th:if="${#fields.hasErrors('options[1].text')}" class="error" th:errors="*{options[1].text}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="option3">Choice 3</label>
+            <input type="text" th:field="*{options[2].text}" id="option3" placeholder="Third choice" required/>
+            <div th:if="${#fields.hasErrors('options[2].text')}" class="error" th:errors="*{options[2].text}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="option4">Choice 4</label>
+            <input type="text" th:field="*{options[3].text}" id="option4" placeholder="Fourth choice" required/>
+            <div th:if="${#fields.hasErrors('options[3].text')}" class="error" th:errors="*{options[3].text}"></div>
+        </div>
+
+        <div class="button-group">
+            <button type="submit">Create Poll</button>
+            <a th:href="@{/polls}" class="back-link">Back to Polls</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

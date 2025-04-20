@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Applications: Design And Development | 網路應用程式：設計與開發</title>
+    <title>網絡應用程式：設計與開發</title>
     <style>
         body {
-            font-family: Arial, "Microsoft JhengHei", sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
@@ -18,8 +18,33 @@
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
-        .action-links {
+        .container {
             margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+        .list-group-item {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .list-group-item a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+        .action-links {
+            margin: 15px 0;
         }
         .action-links a {
             display: inline-block;
@@ -38,48 +63,50 @@
             padding-top: 15px;
             border-top: 1px solid #eee;
         }
-        .language-switcher a {
-            display: block;
-            margin: 10px 0;
-            color: #3498db;
-            text-decoration: none;
-        }
-        .language-switcher a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
-        }
     </style>
 </head>
 <body>
 <header>
-
-    <h1>網路應用程式：設計與開發</h1>
+    <h1>網絡應用程式：設計與開發</h1>
 </header>
 
 <section>
     <h2>課堂:</h2>
-    <ul>
-        <li>L21</li>
-        <li>L22</li>
-        <li>L23</li>
-        <li>L24</li>
+    <ul class="list-group">
+        <li class="list-group-item">L1</li>
+        <li class="list-group-item">L2</li>
+        <li class="list-group-item">L3</li>
+        <li class="list-group-item">L4</li>
     </ul>
 </section>
+
+<div class="action-links">
+    <a href="/login">登入</a>
+    <a href="/register">注册</a>
+</div>
 
 <div class="action-links">
     <a href="/login">Login</a>
     <a href="/register">Register</a>
 </div>
 
+<div class="container">
+    <h2>投票</h2>
+    <div class="action-links">
+        <a href="/polls">投票</a>
+        <a href="/polls/new">創建投票</a>
+    </div>
+    <ul class="list-group">
+        <li th:each="投票 : ${polls}" class="list-group-item">
+            <a th:href="@{/polls/{id}(id=${poll.id})}" th:text="${poll.question}"></a>
+        </li>
+    </ul>
+</div>
+
 <div class="language-switcher">
-    <p>Select Language:</p>
-    <a href="/index.html">Switch to English version</a> |
-    <a href="/index-sp-chin.html">简体中文版 (Simplified Chinese)</a>
+    <p>選擇語言:</p>
+    <a href="/index.html">English</a> |
+    <a href="/index-sp-chin.html">简体中文 (Simplified Chinese)</a>
 </div>
 </body>
 </html>
